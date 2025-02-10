@@ -1,0 +1,24 @@
+{
+  "name": "@brngdsn/unmd",
+  "version": "0.2.0",
+  "description": "A CLI tool to unpack code fences from Markdown into files",
+  "type": "module",
+  "bin": {
+    "unmd": "./bin/unmd.js"
+  },
+  "scripts": {
+    "start": "node ./bin/unmd.js"
+  },
+  "keywords": [
+    "markdown",
+    "extract",
+    "code-fence",
+    "unmarkdown"
+  ],
+  "author": "brn.gdsn@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "markdown-it": "^13.0.1"
+  }
+}
+
