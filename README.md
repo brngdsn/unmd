@@ -1,59 +1,53 @@
 # unmd
 
-**unmd** is a command-line tool that extracts code blocks from Markdown files and writes them to their respective files. This is especially useful for projects where you want to maintain code examples or templates in Markdown documentation and later convert them into standalone files.
+**unmd** is a CLI tool that extracts code fences from Markdown files and writes them to disk as files. It is especially useful when working with AI chats that generate code or entire projects in Markdown format.
 
 ---
 
 ## Features
 
-- **Automatic File Creation:** Extracts code fences from Markdown and writes them to files based on a path specified in the code block.
-- **Directory Support:** Automatically creates directories if they do not exist.
-- **Simple CLI Usage:** Run the tool with a single command and a Markdown file.
+- **Extract Code Fences:** Scans Markdown files for fenced code blocks.
+- **File Path Detection:** Expects the first line of each code block to be a comment specifying the target file path (e.g., `// src/index.js`).
+- **Automatic Directory Creation:** Creates necessary directories if they don't already exist.
+- **Seamless Integration:** Perfect for processing Markdown outputs from AI code generators.
+
+---
+
+## Requirements
+
+- **Node.js:** v20.8.0 or later (see [`.nvmrc`](./.nvmrc))
+- **npm:** Comes with Node.js
 
 ---
 
 ## Installation
 
-### Prerequisites
-
-- **Node.js:** Make sure you have [Node.js](https://nodejs.org/) version **20.8.0** or later. You can manage Node.js versions using [nvm](https://github.com/nvm-sh/nvm) (the `.nvmrc` file is included in this repository).
-
-### Install Globally
-
-You can install **unmd** globally using npm:
+Install **unmd** globally using npm:
 
 ```bash
 npm install -g @brngdsn/unmd
 ```
 
-This will make the `unmd` command available globally on your system.
+Alternatively, you can run it directly using [npx](https://www.npmjs.com/package/npx):
+
+```bash
+npx @brngdsn/unmd <markdown-file>
+```
 
 ---
 
 ## Usage
 
-Run **unmd** from the command line with the path to your Markdown file:
+The CLI accepts a Markdown file as an argument and processes all code fences with a file path comment on the first line.
 
-```bash
-unmd <markdown-file>
-```
+### Markdown File Format
 
-### How It Works
-
-1. **Code Fence Parsing:** The tool parses your Markdown file for fenced code blocks.
-2. **File Path Declaration:** It expects the first line of each code block to be a comment declaring the file path (e.g., `// src/index.js`).
-3. **File Creation:** The remaining lines in the code block are treated as the file's content. The tool creates the file (and any necessary directories) and writes the content to it.
-
----
-
-## Example
-
-Given a Markdown file `example.md` with the following content:
+Each code fence should start with a comment that specifies the file path, followed by the code. For example:
 
 ```markdown
-# Example
+# My Project
 
-Here is a simple JavaScript file:
+Here is an example of how to define a file within Markdown:
 
 ```js
 // src/index.js
@@ -61,34 +55,52 @@ console.log("Hello, world!");
 ```
 ```
 
-Running the command:
-
-```bash
-unmd example.md
-```
-
-Will create the file `src/index.js` with the following content:
+When you run **unmd** on the above Markdown, it will create a file at `src/index.js` containing:
 
 ```js
 console.log("Hello, world!");
 ```
 
+### Running the Tool
+
+Simply pass the Markdown file as an argument:
+
+```bash
+unmd README.md
+```
+
+If no file is provided, the tool will display a usage message:
+
+```bash
+Usage: unmd <markdown-file>
+```
+
+---
+
+## How It Works
+
+1. **Read File:** The tool reads the specified Markdown file.
+2. **Parse Markdown:** It uses [markdown-it](https://github.com/markdown-it/markdown-it) to parse the Markdown content.
+3. **Extract Code Fences:** It scans for fenced code blocks.
+4. **Detect File Path:** It looks for a file path in the first line of each code block (formatted as `// path/to/file.ext`).
+5. **Write Files:** It writes the remaining lines of the code block to the corresponding file, creating directories as needed.
+
 ---
 
 ## Contributing
 
-Contributions are welcome! Please fork the repository and submit pull requests for any features or bug fixes.
+Contributions, bug reports, and feature requests are welcome! Please open an issue or submit a pull request on the [GitHub repository](https://github.com/your-repo).
 
 ---
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
 
-## Contact
+## Author
 
-For questions or feedback, please contact [brn.gdsn@gmail.com](mailto:brn.gdsn@gmail.com).
+brn.gdsn@gmail.com
 
 Happy coding!
