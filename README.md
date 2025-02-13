@@ -49,10 +49,10 @@ Each code fence should start with a comment that specifies the file path, follow
 
 Here is an example of how to define a file within Markdown:
 
-```js
+\`\`\`js
 // src/index.js
 console.log("Hello, world!");
-```
+\`\`\`
 ```
 
 When you run **unmd** on the above Markdown, it will create a file at `src/index.js` containing:
