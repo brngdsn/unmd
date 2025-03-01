@@ -1,106 +1,75 @@
-# unmd
+<div align="center">
+<h1 align="center">
+<img src="https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/ec559a9f6bfd399b82bb44393651661b08aaf7ba/icons/folder-markdown-open.svg" width="100" />
+<br>UNMD</h1>
+<h3>◦ A CLI tool to unpack code fences from Markdown into files.</h3>
+<h3>◦ Developed with modern JavaScript technologies.</h3>
 
-**unmd** is a CLI tool that extracts code fences from Markdown files and writes them to disk as files. It is especially useful when working with AI chats that generate code or entire projects in Markdown format.
+<p align="center">
+<img src="https://img.shields.io/badge/license-MIT-5D6D7E.svg" alt="License" />
+<img src="https://img.shields.io/github/last-commit/brngdsn/unmd?style=flat-square&color=5D6D7E" alt="Last Commit" />
+<img src="https://img.shields.io/github/languages/top/brngdsn/unmd?style=flat-square&color=5D6D7E" alt="Top Language" />
+<img src="https://img.shields.io/github/languages/count/brngdsn/unmd?style=flat-square&color=5D6D7E" alt="Language Count" />
+<img src="https://img.shields.io/github/repo-size/brngdsn/unmd?style=flat-square&color=5D6D7E" alt="Repo Size" />
+</p>
+<p align="center">
+<img src="https://img.shields.io/badge/Node.js-8CC84B.svg?style=flat-square&logo=Node.js&logoColor=white" alt="Node.js" />
+<img src="https://img.shields.io/badge/Markdown-it-000000.svg?style=flat-square&logo=Markdown-It&logoColor=white" alt="Markdown-it" />
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=flat-square&logo=JavaScript&logoColor=black" alt="JavaScript" />
+</p>
+</div>
 
 ---
 
-## Features
+## 📖 About the Project
+`unmd` is a command-line interface (CLI) tool designed to extract code fences from Markdown files and create the corresponding files on the filesystem. This tool is particularly useful for developers who want to manage code snippets, documentation, or any content stored within Markdown that include executable code blocks.
 
-- **Extract Code Fences:** Scans Markdown files for fenced code blocks.
-- **File Path Detection:** Expects the first line of each code block to be a comment specifying the target file path (e.g., `// src/index.js`).
-- **Automatic Directory Creation:** Creates necessary directories if they don't already exist.
-- **Seamless Integration:** Perfect for processing Markdown outputs from AI code generators.
+## 🎯 Features
+- Extracts code blocks annotated with file paths from Markdown files.
+- Automatically creates corresponding files in the specified structure.
+- Simple and effective command-line usage.
 
----
+## 🚀 Quick Start
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/brngdsn/unmd.git
+   cd unmd
+   ```
 
-## Requirements
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-- **Node.js:** v20.8.0 or later (see [`.nvmrc`](./.nvmrc))
-- **npm:** Comes with Node.js
+3. **Run the tool**:
+   ```bash
+   npx unmd path/to/your/markdown-file.md
+   ```
 
----
+4. Optionally, you can create an alias for easier usage:
+   ```bash
+   alias unmd="node ./bin/unmd.js"
+   ```
 
-## Installation
+## 🛠️ Tech Stack
+- **Node.js**: JavaScript runtime to execute the CLI tool.
+- **Markdown-it**: A Markdown parser used for interpreting the Markdown content.
 
-Install **unmd** globally using npm:
-
-```bash
-npm install -g @brngdsn/unmd
+## 📂 Folder Structure
+```plaintext
+.
+├── bin
+│   └── unmd.js         # Main CLI executable script
+├── .gitignore          # Git ignore file
+├── .nvmrc              # Node version manager configuration
+└── package.json        # Node package configuration
 ```
 
-Alternatively, you can run it directly using [npx](https://www.npmjs.com/package/npx):
+## 📜 License & Credits
+This project is licensed under the MIT License. For detailed information, please refer to the [LICENSE](LICENSE) file.
 
-```bash
-npx @brngdsn/unmd <markdown-file>
-```
-
----
-
-## Usage
-
-The CLI accepts a Markdown file as an argument and processes all code fences with a file path comment on the first line.
-
-### Markdown File Format
-
-Each code fence should start with a comment that specifies the file path, followed by the code. For example:
-
-```markdown
-# My Project
-
-Here is an example of how to define a file within Markdown:
-
-\`\`\`js
-// src/index.js
-console.log("Hello, world!");
-\`\`\`
-```
-
-When you run **unmd** on the above Markdown, it will create a file at `src/index.js` containing:
-
-```js
-console.log("Hello, world!");
-```
-
-### Running the Tool
-
-Simply pass the Markdown file as an argument:
-
-```bash
-unmd README.md
-```
-
-If no file is provided, the tool will display a usage message:
-
-```bash
-Usage: unmd <markdown-file>
-```
+Contributions are welcome! Please submit issues or pull requests for enhancements and bug fixes, and I will be glad to review them.
 
 ---
 
-## How It Works
-
-1. **Read File:** The tool reads the specified Markdown file.
-2. **Parse Markdown:** It uses [markdown-it](https://github.com/markdown-it/markdown-it) to parse the Markdown content.
-3. **Extract Code Fences:** It scans for fenced code blocks.
-4. **Detect File Path:** It looks for a file path in the first line of each code block (formatted as `// path/to/file.ext`).
-5. **Write Files:** It writes the remaining lines of the code block to the corresponding file, creating directories as needed.
-
----
-
-## Contributing
-
-Contributions, bug reports, and feature requests are welcome! Please open an issue or submit a pull request on the [GitHub repository](https://github.com/your-repo).
-
----
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
-
-## Author
-
-brn.gdsn@gmail.com
-
-Happy coding!
+For further queries, feel free to reach out at [brn.gdsn@gmail.com](mailto:brn.gdsn@gmail.com) or open issues in the GitHub repository. Happy coding!
